@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "aiobqstream"
+version = "1.0.0"
+description = "Python async Wrapper on Bigquery Storage Write API."
+authors = ["MtkN1 <51289448+MtkN1@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "aiobqstream", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-cloud-bigquery-storage = "^2.0.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+setuptools = "<67.3.0"
+python-dotenv = "^1.0.0"
+pytest-asyncio = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
