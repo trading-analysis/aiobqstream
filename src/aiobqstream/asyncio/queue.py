@@ -1,6 +1,9 @@
 import asyncio
+import logging
 from collections.abc import Coroutine
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 class QueueTask:
@@ -15,7 +18,10 @@ class QueueTask:
             item = await self._queue.get()
             if isinstance(item, StopQueue):
                 break
-            await item
+            try:
+                await item
+            except Exception as e:
+                logger.warning(repr(e))
 
     def produce(self, item: Coroutine[Any, Any, Any]):
         self._queue.put_nowait(item)
